@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1.构造器实例化（无参数构造器），最标准，使用最多。 -->
+    <bean id="cat1" class="com.thmarket.been_test.Cat1" />
+
+    <!-- 2.静态工厂方法实例化，解决系统遗留问题。 -->
+    <bean id="cat2" class="com.thmarket.been_test.Cat2Factory" factory-method="createCat2"/>
+
+    <!-- 3.实例工厂方法实例化，解决系统遗留问题。 -->
+    <bean id="cat3Factory" class="com.thmarket.been_test.Cat3Factory" />
+    <bean id="cat3" class="com.thmarket.been_test.Cat3" factory-bean="cat3Factory"/>
+
+    <!-- 4.实现FactoryBean接口实例化:实现工厂变种，如集成MyBatis框架使用。 -->
+    <bean id="cat4" class="com.thmarket.been_test.Cat4Factory" />
+
+</beans>
